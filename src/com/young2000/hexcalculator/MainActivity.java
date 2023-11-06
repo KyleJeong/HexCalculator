@@ -49,11 +49,11 @@ public class MainActivity extends Activity implements OnClickListener {
             versionName = "Unknown";
         }
 
-        TextView textview = (TextView) findViewById(R.id.versionname);
+        TextView textview = findViewById(R.id.versionname);
         textview.setText(versionName);
 
         // Create HexLayout
-        tr = (TableRow) findViewById(R.id.tableRow3);
+        tr = findViewById(R.id.tableRow3);
 
         for (int idx = 15; idx >= 0; idx--) {
             ll = new LinearLayout(this);
@@ -87,7 +87,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             tr.addView(ll);
         }
-        tr = (TableRow) findViewById(R.id.tableRow2);
+        tr = findViewById(R.id.tableRow2);
         for (int idx = 15; idx >= 0; idx--) {
             ll = new LinearLayout(this);
             ll.setOrientation(LinearLayout.VERTICAL);
@@ -118,7 +118,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             tr.addView(ll);
         }
-        tr = (TableRow) findViewById(R.id.tableRow1);
+        tr = findViewById(R.id.tableRow1);
         for (int idx = 15; idx >= 0; idx--) {
             ll = new LinearLayout(this);
             ll.setOrientation(LinearLayout.VERTICAL);
@@ -149,7 +149,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             tr.addView(ll);
         }
-        tr = (TableRow) findViewById(R.id.tableRow0);
+        tr = findViewById(R.id.tableRow0);
         for (int idx = 15; idx >= 0; idx--) {
             ll = new LinearLayout(this);
             ll.setOrientation(LinearLayout.VERTICAL);
@@ -181,7 +181,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             tr.addView(ll);
         }
-        ll = (LinearLayout) findViewById(R.id.LLBtn1);
+        ll = findViewById(R.id.LLBtn1);
         int num;
         for (num = 12; num < 16; num++) {
             btn = new Button(this, null, android.R.attr.buttonStyleSmall);
@@ -204,7 +204,7 @@ public class MainActivity extends Activity implements OnClickListener {
         btn.setOnClickListener(this);
         ll.addView(btn);
 
-        ll = (LinearLayout) findViewById(R.id.LLBtn2);
+        ll = findViewById(R.id.LLBtn2);
         for (num = 8; num < 12; num++) {
             btn = new Button(this, null, android.R.attr.buttonStyleSmall);
             btn.setId(200 + num);
@@ -226,7 +226,7 @@ public class MainActivity extends Activity implements OnClickListener {
         btn.setOnClickListener(this);
         ll.addView(btn);
 
-        ll = (LinearLayout) findViewById(R.id.LLBtn3);
+        ll = findViewById(R.id.LLBtn3);
         for (num = 4; num < 8; num++) {
             btn = new Button(this, null, android.R.attr.buttonStyleSmall);
             btn.setId(200 + num);
@@ -235,7 +235,7 @@ public class MainActivity extends Activity implements OnClickListener {
             ll.addView(btn);
         }
 
-        ll = (LinearLayout) findViewById(R.id.LLBtn4);
+        ll = findViewById(R.id.LLBtn4);
         for (num = 0; num < 4; num++) {
             btn = new Button(this, null, android.R.attr.buttonStyleSmall);
             btn.setId(200 + num);
@@ -266,7 +266,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View arg0) {
-        Integer pos = arg0.getId() - 200;
+        int pos = arg0.getId() - 200;
         if (pos < 16) {
             HexNumber <<= 4;
             HexNumber |= (long) pos;
@@ -293,7 +293,7 @@ public class MainActivity extends Activity implements OnClickListener {
             UpdateNumber();
             UpdateBits();
         } else {
-            Long lpos = (long) (arg0.getId() - 500);
+            long lpos = (long) (arg0.getId() - 500);
             if (((TextView) arg0).getText().equals("0")) {
                 HexNumber |= ((long) 1 << lpos);
                 ((TextView) arg0).setText("1");
@@ -319,7 +319,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 hex_value.substring(4, 8) + " " +
                 hex_value.substring(8, 12) + " " +
                 hex_value.substring(12, 16);
-        tv = (TextView) findViewById(R.id.textView1);
+        tv = findViewById(R.id.textView1);
         tv.setText("0x" + hex_value);
 
     }
@@ -327,7 +327,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private void UpdateBits() {
         TextView arg0;
         for (int pos = 0; pos < 64; pos++) {
-            arg0 = (TextView) findViewById(500 + pos);
+            arg0 = findViewById(500 + pos);
             if ((HexNumber & ((long) 1 << pos)) != (long) 0) {
                 arg0.setText("1");
             } else {
